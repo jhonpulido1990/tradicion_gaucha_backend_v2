@@ -22,31 +22,39 @@ async function bootstrap() {
     }),
   );
 
-  // Configuración de Swagger
-  const config = new DocumentBuilder()
-    .setTitle('Tradición Gaucha API')
-    .setDescription('API Backend para ecommerce Tradición Gaucha')
-    .setVersion('1.0')
-    .addTag('auth', 'Endpoints de autenticación')
-    .addTag('users', 'Gestión de usuarios')
-    .addTag('products', 'Gestión de productos')
-    .addTag('orders', 'Gestión de pedidos')
-    .addTag('shipping', 'Gestión de envíos')
-    .addBearerAuth(
-      {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-        name: 'JWT',
-        description: 'Enter JWT token',
-        in: 'header',
-      },
-      'JWT-auth', // Este nombre debe coincidir con el usado en los decoradores
-    )
-    .build();
+  // Configurar Swagger solo en desarrollo
+  if (process.env.NODE_ENV !== 'production') {
+    const config = new DocumentBuilder()
+      .setTitle('Tradición Gaucha API')
+      .setDescription('API Backend para ecommerce Tradición Gaucha')
+      .setVersion('1.0')
+      .addTag('auth', 'Endpoints de autenticación')
+      .addTag('users', 'Gestión de usuarios')
+      .addTag('products', 'Gestión de productos')
+      .addTag('orders', 'Gestión de pedidos')
+      .addTag('shipping', 'Gestión de envíos')
+      .addBearerAuth(
+        {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+          name: 'JWT',
+          description: 'Enter JWT token',
+          in: 'header',
+        },
+        'JWT-auth',
+      )
+      .build();
 
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/docs', app, document);
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('api/docs', app, document, {
+      swaggerOptions: {
+        persistAuthorization: true,
+      },
+    });
+
+    console.log('Swagger documentation available at: /api/docs');
+  }
 
   // Habilitar CORS
   app.enableCors({
