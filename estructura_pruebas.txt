@@ -1,0 +1,12 @@
+test/
+├── e2e/
+│   ├── auth.e2e-spec.ts
+│   ├── products.e2e-spec.ts
+│   └── orders.e2e-spec.ts
+├── unit/
+│   ├── auth/
+│   ├── products/
+│   └── orders/
+└── fixtures/
+    ├── users.fixture.ts
+    └── products.fixture.ts

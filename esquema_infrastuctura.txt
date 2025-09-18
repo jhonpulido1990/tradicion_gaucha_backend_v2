@@ -1,0 +1,82 @@
+src/
+├── main.ts
+├── app.module.ts
+├── common/                          # Código compartido
+│   ├── decorators/
+│   │   ├── user.decorator.ts
+│   │   └── roles.decorator.ts
+│   ├── dto/
+│   │   ├── pagination.dto.ts
+│   │   └── base-response.dto.ts
+│   ├── entities/
+│   │   └── base.entity.ts
+│   ├── enums/
+│   │   ├── user-role.enum.ts
+│   │   └── order-status.enum.ts
+│   ├── guards/
+│   │   ├── jwt-auth.guard.ts
+│   │   └── roles.guard.ts
+│   ├── interceptors/
+│   │   ├── transform.interceptor.ts
+│   │   └── logging.interceptor.ts
+│   ├── pipes/
+│   │   └── validation.pipe.ts
+│   ├── filters/
+│   │   └── http-exception.filter.ts
+│   └── utils/
+│       ├── bcrypt.util.ts
+│       └── email.util.ts
+├── config/                          # Configuraciones
+│   ├── database.config.ts
+│   ├── jwt.config.ts
+│   ├── shippo.config.ts
+│   └── email.config.ts
+└── modules/                         # Módulos de negocio
+    ├── auth/
+    │   ├── auth.module.ts
+    │   ├── auth.controller.ts
+    │   ├── auth.service.ts
+    │   ├── dto/
+    │   │   ├── login.dto.ts
+    │   │   ├── register.dto.ts
+    │   │   └── reset-password.dto.ts
+    │   ├── strategies/
+    │   │   └── jwt.strategy.ts
+    │   └── interfaces/
+    │       └── jwt-payload.interface.ts
+    ├── users/
+    │   ├── users.module.ts
+    │   ├── users.controller.ts
+    │   ├── users.service.ts
+    │   ├── entities/
+    │   │   └── user.entity.ts
+    │   └── dto/
+    │       ├── create-user.dto.ts
+    │       └── update-user.dto.ts
+    ├── products/
+    │   ├── products.module.ts
+    │   ├── products.controller.ts
+    │   ├── products.service.ts
+    │   ├── entities/
+    │   │   ├── product.entity.ts
+    │   │   └── category.entity.ts
+    │   └── dto/
+    │       ├── create-product.dto.ts
+    │       └── update-product.dto.ts
+    ├── orders/
+    │   ├── orders.module.ts
+    │   ├── orders.controller.ts
+    │   ├── orders.service.ts
+    │   ├── entities/
+    │   │   ├── order.entity.ts
+    │   │   └── order-item.entity.ts
+    │   └── dto/
+    ├── shipping/                    # Para Shippo API
+    │   ├── shipping.module.ts
+    │   ├── shipping.controller.ts
+    │   ├── shipping.service.ts
+    │   └── dto/
+    └── notifications/               # Para emails
+        ├── notifications.module.ts
+        ├── notifications.service.ts
+        └── dto/
