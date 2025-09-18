@@ -23,7 +23,7 @@ async function bootstrap() {
   );
 
   // Configuración de Swagger
-  const config = new DocumentBuilder()
+  /* const config = new DocumentBuilder()
     .setTitle('Tradición Gaucha API')
     .setDescription('API Backend para ecommerce Tradición Gaucha')
     .setVersion('1.0')
@@ -46,7 +46,7 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/docs', app, document);
+  SwaggerModule.setup('api/docs', app, document); */
 
   // Habilitar CORS
   app.enableCors({
